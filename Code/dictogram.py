@@ -44,12 +44,12 @@ class Dictogram(dict):
         # TODO: Randomly choose a word based on its frequency in this histogram
         histogram = self
         length = len(histogram)
-        random_dart = random.randint(1, length)
+        dart = random.randint(1, length)
 
         target = 0
         for key in histogram:
             target += histogram[key]
-            if target >= random_dart:
+            if target >= dart:
                 return key
 
 
