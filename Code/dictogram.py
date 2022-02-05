@@ -1,7 +1,6 @@
 #!python
 
 from __future__ import division, print_function
-from ctypes.wintypes import tagRECT  # Python 2 and 3 compatibility
 import random
 
 
