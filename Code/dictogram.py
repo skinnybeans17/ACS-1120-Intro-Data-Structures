@@ -1,6 +1,7 @@
 #!python
 
-from __future__ import division, print_function  # Python 2 and 3 compatibility
+from __future__ import division, print_function
+from ctypes.wintypes import tagRECT  # Python 2 and 3 compatibility
 import random
 
 
@@ -43,14 +44,14 @@ class Dictogram(dict):
         # TODO: Randomly choose a word based on its frequency in this histogram
         histogram = self
         length = len(histogram)
-        dart = random.randint(1, length)
+        random_dart = random.randint(1, length)
 
         target = 0
         for key in histogram:
             target += histogram[key]
-            if target >= dart:
+            if target >= random_dart:
                 return key
-                
+
 
 def print_histogram(word_list):
     print()
