@@ -27,5 +27,7 @@ if __name__ == "__main__":
 
 #create listogram
 #write set_of_words
+#create sentence
+#remove repeated_words
 #read listogram
 #return
