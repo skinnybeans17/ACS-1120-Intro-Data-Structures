@@ -26,6 +26,7 @@ class Listogram(list):
             current_length = self[index][1] + count
             self.pop(index)
             self.append((word, current_length))
+            self.tokens += count
         else:
             self.append((word, count))
             self.types += 1
