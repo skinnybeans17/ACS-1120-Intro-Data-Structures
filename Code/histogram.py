@@ -1,3 +1,9 @@
+def read_file(filename):
+    f = open(filename, 'r', encoding='utf-8-sig')
+    words = f.read()
+    f.close()
+    return words
+
 def histogram(file):
     with open(file, 'r') as f:
         text = f.read().split()
