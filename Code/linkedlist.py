@@ -136,7 +136,5 @@ class LinkedList:
 if __name__ == "__main__":
     my_ll = LinkedList(["A", "B", "C"])
     print(my_ll)
-
-    
-
-
+    print(my_ll.head)
+    print(my_ll.tail)
