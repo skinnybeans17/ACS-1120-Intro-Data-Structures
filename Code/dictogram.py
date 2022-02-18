@@ -17,6 +17,7 @@ class Dictogram(dict):
         if word_list is not None:
             for word in word_list:
                 self.add_count(word)
+                self.frequency(word)
 
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
