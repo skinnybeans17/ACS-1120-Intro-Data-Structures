@@ -1,6 +1,5 @@
 #!python
 
-
 class Node(object):
 
     def __init__(self, data):
@@ -103,6 +102,15 @@ class LinkedList:
             else:
                 node = node.next
         return False
+
+    def find_if_matches(self, matching_function):
+        """Return an item from this linked list if it is present."""
+        node = self.head
+        while node is not None:
+            if matching_function(node.data): 
+                return node.data
+            node = node.next
+        return None
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
