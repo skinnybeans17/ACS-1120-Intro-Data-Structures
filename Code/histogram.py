@@ -34,6 +34,7 @@ def frequency(word: str, histogram):
                     return pair[1]
 
 if __name__ == '__main__':
+    file = ""
     histogram = histogram('code/script.txt')
     print(histogram)
     print(unique_words(histogram))
