@@ -26,7 +26,8 @@ class HashTable(object):
     def _bucket_index(self, key):
         """Return the bucket index where the given key would be stored."""
         # Calculate the given key's hash code and transform into bucket index
-        return hash(key) % len(self.buckets)
+        bucket_index = hash(key) % len(self.buckets)
+        return bucket_index
 
     def keys(self):
         """Return a list of all keys in this hash table.
