@@ -69,7 +69,7 @@ class LinkedList:
         # TODO: If self.is_empty() == True set the head and the tail to the new node
         # TODO: Else append node after tail
         node = Node(item)
-        if self.is_empty():
+        if self.is_empty() == True:
             self.head = node
             self.tail = node
         else:
@@ -83,12 +83,12 @@ class LinkedList:
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
         node = Node(item)
-        if self.head is not None:
-            node.next = self.head
+        if self.is_empty():
+            self.tail = node
             self.head = node
         else:
             self.head = node
-            self.tail = node
+            node.next = self.head
 
     def find(self, item):
         """Return an item from this linked list if it is present.
