@@ -1,8 +1,9 @@
 """Main script, uses other modules to generate sentences."""
 from flask import Flask
-from histogram import read_file
-from histogram import histogram
+from histogram import read_file, histogram
 from dictogram import Dictogram
+from cleanup import read_file
+
 
 app = Flask(__name__)
 
