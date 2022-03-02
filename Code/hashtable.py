@@ -113,10 +113,9 @@ class HashTable(object):
         bucket = self.buckets[index]
         entry = bucket.find_if_matches(lambda entry: entry[0] == key)
 
-        if entry:
-            bucket.update(key, value)
-        else:
-            bucket.append([key, value])
+        if entry is not None:
+            bucket.delete(entry)
+        bucket.append([key, value])
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
