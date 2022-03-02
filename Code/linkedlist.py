@@ -133,7 +133,7 @@ class LinkedList:
             return
         else:
             while node is not None:
-                next_node = node.text
+                next_node = node.next
                 if next_node == item:
                     node.next = node.next.next
                     return
