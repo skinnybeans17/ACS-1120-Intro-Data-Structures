@@ -140,8 +140,8 @@ class LinkedList:
             else:
                 previous.next = node.next
 
-            previous = node
-            node = node.next
+                previous = node
+                node = node.next
 
         if found == False:
             raise ValueError("Item couldn't be found: {}".format(item))
