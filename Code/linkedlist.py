@@ -119,24 +119,34 @@ class LinkedList:
         # Hint: raise ValueError('Item not found: {}'.format(item))
         node = self.head
 
-        if node is None:
-            raise ValueError("This item wasn't found: {}".format(item))
-        elif node == item:
-            if node.next is None:
-                self.head = None
-                self.tail = None
+        previous = None
+        found = False
+
+        while node != None:
+            if node.data == item:
+                found = True
+
+                if node == self.head:
+
+                    if node.next == None:
+                        self.head = None
+                        self.tail = None
+                    else:
+                        self.head = node.next
+
+            elif node == self.tail:
+                previous.next = None
+                self.tail = previous
             else:
-                self.head = node.next
-            return
-        else:
-            while node is not None:
-                next_node = node.next
-                if next_node == item:
-                    node.next = node.next.next
-                    return
-                else:
-                    node = node.next
-        raise ValueError("Item couldn't be found: {}".format(item))
+                previous.next = node.next
+
+            previous = node
+            node = node.next
+
+        if found == False:
+            raise ValueError("Item couldn't be found: {}".format(item))
+
+        
 
 if __name__ == "__main__":
     my_ll = LinkedList(["A", "B", "C"])
