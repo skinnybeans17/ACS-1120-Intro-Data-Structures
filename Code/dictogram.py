@@ -33,8 +33,7 @@ class Dictogram(dict):
         # TODO: Retrieve word frequency count
         if word in self:
             return self[word]
-        else:
-            return 0
+        return 0
 
     def sample(self):
         """Return a word from this histogram, randomly sampled by weighting
