@@ -67,7 +67,6 @@ class Listogram(list):
             acc += length
             if acc >= target_number:
                 return word
-        return None
 
 
 def print_histogram(word_list):
