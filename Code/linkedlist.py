@@ -87,26 +87,23 @@ class LinkedList:
             self.tail = node
             self.head = node
         else:
-            self.head = node
             node.next = self.head
+            self.head = node
 
     def find(self, item):
         """Return an item from this linked list if it is present.
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item, if present return True otherwise False
-        node = self.head
-        while node is not None:
-            if node.data == item:
+        for node in self.items():
+            if item == node:
                 return True
-            else:
-                node = node.next
         return False
 
     def find_if_matches(self, matching_function):
         """Return an item from this linked list if it is present."""
         node = self.head
-        while node is not None:
+        while node:
             if matching_function(node.data): 
                 return node.data
             node = node.next
