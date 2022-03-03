@@ -4,6 +4,7 @@ from histogram import read_file, histogram
 from dictogram import Dictogram
 from cleanup import read_file
 
+file = 'code/script.txt'
 
 app = Flask(__name__)
 
@@ -12,7 +13,7 @@ app = Flask(__name__)
 def before_first_request():
     """Runs only once at Flask startup"""
     # TODO: Initialize your histogram, hash table, or markov chain here.
-    word_list = read_file('Code/script.txt')
+    word_list = read_file(file)
     histogram = Dictogram(word_list)
     return histogram
 
