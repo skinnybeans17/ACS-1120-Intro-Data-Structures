@@ -8,8 +8,7 @@ def read_file(file):
         punct = punctuation + '”“‘’–…'
         mod_str = ' '.join(filter(None, (word.strip(punct) for word in text.split())))
         low_str = mod_str.lower()
-        recap_str = re.sub('i\s', ' I ', low_str)
-        str_list = recap_str().split()
+        str_list = re.sub('i\s', ' I ', low_str)
     return str_list
 
 def clean_up(file):

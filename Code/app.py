@@ -1,9 +1,10 @@
 """Main script, uses other modules to generate sentences."""
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from histogram import read_file, histogram
 from cleanup import read_file
 from tokens import tokenize
 from markov_chain_two import MarkovChain
+import twitter
 
 file = 'code/script.txt'
 
@@ -31,6 +32,12 @@ def home():
     return render_template('index.html', message=list_to_str)
     #return "<p>Needle is very needy! *slap*</p>"
 
+@app.route("/tweet", methods=['POST'])
+def tweet():
+    status = request.form['sentence']
+    print(status)
+    twitter.tweet(status)
+    return redirect('/')
 
 if __name__ == "__main__":
     """To run the Flask server, execute `python app.py` in your terminal.
