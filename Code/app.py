@@ -3,11 +3,13 @@ from flask import Flask
 from histogram import read_file, histogram
 from dictogram import Dictogram
 from cleanup import read_file
+from tokens import tokenize
 
 file = 'code/script.txt'
 
 app = Flask(__name__)
-
+source = open(file).read()
+tokens = tokenize(source)
 
 @app.before_first_request
 def before_first_request():
@@ -16,7 +18,6 @@ def before_first_request():
     word_list = read_file(file)
     histogram = Dictogram(word_list)
     return histogram
-
 
 @app.route("/")
 def home():
