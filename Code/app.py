@@ -1,9 +1,9 @@
 """Main script, uses other modules to generate sentences."""
-from flask import Flask
+from flask import Flask, render_template
 from histogram import read_file, histogram
-from dictogram import Dictogram
 from cleanup import read_file
 from tokens import tokenize
+from markov_chain_two import MarkovChain
 
 file = 'code/script.txt'
 
@@ -16,14 +16,19 @@ def before_first_request():
     """Runs only once at Flask startup"""
     # TODO: Initialize your histogram, hash table, or markov chain here.
     word_list = read_file(file)
-    histogram = Dictogram(word_list)
-    return histogram
+    #histogram = Dictogram(word_list)
+    markov_chain = MarkovChain(word_list, 15)
+    return markov_chain
 
 @app.route("/")
 def home():
     """Route that returns a web page containing the generated text."""
-    words = histogram('Code/script.txt')
-    return words
+    markov_chain = before_first_request()
+    walk = markov_chain.walk_chain(50)
+    list_to_str = ""
+    for i in walk:
+        list_to_str += f'{i} '
+    return render_template('index.html', message=list_to_str)
     #return "<p>Needle is very needy! *slap*</p>"
 
 
