@@ -6,19 +6,18 @@ from cleanup import read_file
 from tokens import tokenize
 from markov_chain import tweet_generator
 import twitter
-
-file = 'code/script.txt'
-tokenized_file = tokenize(file)
-markov = markov_chain(tokenized_file)
+from tasks import open_and_low
 
 app = Flask(__name__)
-source = open(file).read()
-tokens = tokenize(source)
+
+file = open_and_low('code/script.txt')
+tokenized_file = tokenize(file)
+markov = markov_chain(tokenized_file)
 
 @app.route("/")
 def home():
     """Route that returns a web page containing the generated text."""
-    sentence = tweet_generator(markov_chain, 80)
+    sentence = tweet_generator(markov, 80)
     return render_template('index.html', sentence=sentence)
     #return "<p>Needle is very needy! *slap*</p>"
 
