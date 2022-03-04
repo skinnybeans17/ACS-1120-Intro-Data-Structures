@@ -1,5 +1,5 @@
 from histogram import histogram, read_file
-file = './code/script.txt'
+file = 'code/script.txt'
 word_list = read_file(file).replace(',', '').replace('.', '').replace('?', '').replace('"', '').replace('”', '').replace('’', '').replace('`', '').replace('!', '').replace('/', '').replace(';', '').replace(':', '').lower().split()
 
 from dictogram import Dictogram

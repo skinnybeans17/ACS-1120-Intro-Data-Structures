@@ -3,10 +3,10 @@ from flask import Flask, render_template, request, redirect
 from histogram import read_file, histogram
 from cleanup import read_file
 from tokens import tokenize
-from markov_chain_two import MarkovChain
+from markov_chain import MarkovChain
 import twitter
 
-file = 'code/script.txt'
+file = 'script.txt'
 
 app = Flask(__name__)
 source = open(file).read()
