@@ -24,12 +24,15 @@ def before_first_request():
 @app.route("/")
 def home():
     """Route that returns a web page containing the generated text."""
+    word_list = read_file(file)
+    markov_chain = MarkovChain(word_list, 15)
     markov_chain = before_first_request()
     walk = markov_chain.walk_chain(50)
-    list_to_str = ""
+    print(walk)
+    list_to_str = " "
     for i in walk:
-        list_to_str += f'{i} '
-    return render_template('index.html', message=list_to_str)
+        list_to_str += f'{ i } '
+    return render_template('index.html', sentence=list_to_str)
     #return "<p>Needle is very needy! *slap*</p>"
 
 @app.route('/tweet', methods=['POST'])

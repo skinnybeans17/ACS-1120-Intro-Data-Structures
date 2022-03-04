@@ -1,7 +1,7 @@
 import os
 import dotenv
 from requests_oauthlib import OAuth1Session
-dotenv.load_dotenv('.env')
+dotenv.load_dotenv('Code/.env')
 
 consumer_key = os.environ.get("TWITTER_CONSUMER_KEY")
 consumer_secret = os.environ.get("TWITTER_CONSUMER_SECRET")

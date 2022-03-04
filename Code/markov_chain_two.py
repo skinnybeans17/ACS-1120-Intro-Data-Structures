@@ -1,3 +1,4 @@
+from ast import Str
 from cleanup import read_file, clean_up
 import random
 from dictogram import Dictogram
@@ -18,34 +19,33 @@ class MarkovChain(object):
                 if index+i in range(0, len(self.corpus)):
                     words.append(self.corpus[index+i])
                 else:
-                    words.append(self.corpus[index+i - len(self.__class__)])
+                    words.append(self.corpus[index+i - len(self.corpus)])
 
-                word_tuple = tuple(words)
-                word_tuples.append(word_tuple)
+            word_tuple = tuple(words)
+            word_tuples.append(word_tuple)
 
-                if index+order in range(0, len(self.corpus)):
-                    next_word = self.corpus[index+order]
-                else:
-                    next_word = self.corpus[index+order - len(self.corpus)]
+            if index+order in range(0, len(self.corpus)):
+                next_word = self.corpus[index+order]
+            else:
+                next_word = self.corpus[index+order - len(self.corpus)]
 
-                if word_tuple in self.dict.keys():
-                    dictogram = self.dict[word_tuple]
-                    if next_word:
-                        if next_word in dictogram.keys():
-                            dictogram.add_count(next_word)
-                        else:
-                            dictogram.add_count(next_word)
-                else:
-                    if next_word:
-                        self.dict[word_tuple] = Dictogram([next_word])
-                return self.dict
+            if word_tuple in self.dict.keys():
+                dictogram = self.dict[word_tuple]
+                if next_word:
+                    if next_word in dictogram.keys():
+                        dictogram.add_count(next_word)
+                    else:
+                        dictogram.add_count(next_word)
+            else:
+                if next_word:
+                    self.dict[word_tuple] = Dictogram([next_word])
+        return self.dict
 
     def walk_chain(self, word_count):
+        characters = 0
         str = []
-        count = 0
         current = random.choice(self.corpus)
-        print(current)
-        while count in range(0, word_count):
+        while characters in range(0, word_count):
             tuples = []
             for i in self.markov_dict.keys():
                 if current == i[0]:
@@ -54,9 +54,14 @@ class MarkovChain(object):
                     return str
                 random_tuple = random.choice(tuples)
                 for n in random_tuple:
-                    str.append(n)
-                    count += 1
-                current = self.markov_dict[random_tuple].sample()
+                    characters += 1
+                    if characters in range(0, 280):
+                        continue
+                    else:
+                        return Str
+                str.append(n)
+                characters += 1
+            current = self.markov_dict[random_tuple].sample()
         return str
 
 if __name__ == '__main__':
