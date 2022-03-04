@@ -32,10 +32,9 @@ def home():
     return render_template('index.html', message=list_to_str)
     #return "<p>Needle is very needy! *slap*</p>"
 
-@app.route("/tweet", methods=['POST'])
+@app.route('/tweet', methods=['POST'])
 def tweet():
     status = request.form['sentence']
-    print(status)
     twitter.tweet(status)
     return redirect('/')
 
