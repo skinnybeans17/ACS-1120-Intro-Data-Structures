@@ -2,8 +2,8 @@ from string import punctuation
 import re
 from tokens import tokenize
 
-def read_file(file):
-    with open(file) as f:
+def read_file(markov):
+    with open(markov) as f:
         text = f.read()
         punct = punctuation + '”“‘’–…'
         mod_str = ' '.join(filter(None, (word.strip(punct) for word in text.split())))
@@ -11,8 +11,8 @@ def read_file(file):
         str_list = re.sub('i\s', ' I ', low_str)
     return str_list
 
-def clean_up(file):
-    with open(file) as f:
+def clean_up(markov):
+    with open(markov) as f:
         text = f.read()
         tokens = tokenize(text)
     return tokens

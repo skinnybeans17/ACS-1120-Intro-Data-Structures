@@ -1,38 +1,25 @@
 """Main script, uses other modules to generate sentences."""
 from flask import Flask, render_template, request, redirect
+from markov_chain import markov_chain
 from histogram import read_file, histogram
 from cleanup import read_file
 from tokens import tokenize
-from markov_chain import MarkovChain
+from markov_chain import tweet_generator
 import twitter
 
 file = 'code/script.txt'
+tokenized_file = tokenize(file)
+markov = markov_chain(tokenized_file)
 
 app = Flask(__name__)
 source = open(file).read()
 tokens = tokenize(source)
 
-@app.before_first_request
-def before_first_request():
-    """Runs only once at Flask startup"""
-    # TODO: Initialize your histogram, hash table, or markov chain here.
-    word_list = read_file(file)
-    #histogram = Dictogram(word_list)
-    markov_chain = MarkovChain(word_list, 15)
-    return markov_chain
-
 @app.route("/")
 def home():
     """Route that returns a web page containing the generated text."""
-    word_list = read_file(file)
-    markov_chain = MarkovChain(word_list, 15)
-    markov_chain = before_first_request()
-    walk = markov_chain.markov_chain(50)
-    print(walk)
-    list_to_str = " "
-    for i in walk:
-        list_to_str += f'{ i } '
-    return render_template('index.html', sentence=list_to_str)
+    sentence = tweet_generator(markov_chain, 80)
+    return render_template('index.html', sentence=sentence)
     #return "<p>Needle is very needy! *slap*</p>"
 
 @app.route('/tweet', methods=['POST'])
