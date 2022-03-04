@@ -6,7 +6,7 @@ from tokens import tokenize
 from markov_chain import MarkovChain
 import twitter
 
-file = 'script.txt'
+file = 'code/script.txt'
 
 app = Flask(__name__)
 source = open(file).read()
@@ -27,7 +27,7 @@ def home():
     word_list = read_file(file)
     markov_chain = MarkovChain(word_list, 15)
     markov_chain = before_first_request()
-    walk = markov_chain.walk_chain(50)
+    walk = markov_chain.markov_chain(50)
     print(walk)
     list_to_str = " "
     for i in walk:
