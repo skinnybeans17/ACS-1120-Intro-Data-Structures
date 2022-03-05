@@ -24,7 +24,7 @@ Bubble: Uhh, yeah...?
 
 Ice Cube: Riiiiiiiight? <getting Bubble close>
 
-Match/Pencil: No! Ice Cube! Stop!
+Match and Pencil: No! Ice Cube! Stop!
 
 <Bubble pops and reappears in Bubble Recovery Center.>
 
@@ -210,7 +210,7 @@ Leafy: Wha...? Oops!
 
 <Final 2: Pin and Leafy>
 
-Leafy/Pin: Rock, Paper, Scissors! <Leafy picks Paper and Pin picks Scissors>
+Leafy and Pin: Rock, Paper, Scissors! <Leafy picks Paper and Pin picks Scissors>
 
 Pin: Scissors beats paper! I get to push you off!
 

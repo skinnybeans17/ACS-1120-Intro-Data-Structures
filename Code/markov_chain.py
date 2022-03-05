@@ -37,5 +37,5 @@ if __name__ == '__main__':
     file_text = open_and_low('code/script.txt')
     word_list = tokenize(file_text)
     markov_test = markov_chain(word_list)
-    sentence_test = tweet_generator(markov_test, 60)
+    sentence_test = tweet_generator(markov_test, 80)
     print(sentence_test)
